@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Endless Discovery</title>
+	<title></title>
+	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	<link rel='stylesheet' href='style.css' type='text/css'/>
+	<style>
+		.formulario {
+			width: 400px;
+			position: relative; 
+			left: 35%;
+			top: 50px;
+			background-color: rgba(0,0,0,0.7);
+			box-shadow: 0px 0px 8px 8px #000;
+			text-align: center;
+		}
+		
+		.formulario input{
+			position: relative;
+			width: 90%;
+			left: 5%;
+		}
+
+		.formulario label{
+			color: orange;
+		}
+		.form-group button {
+			background-color: red;
+		}
+
+		@media(max-width: 500px) {
+			.formulario {
+				width: 300px;
+				left: 3%;
+				top: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" style='font-weight: bold; color: darkorange; font-family: "Lobster";'>Endless</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+         <li>
+        	<a href="Projeto_Final.html">Inicio</a>
+        </li>
+        <li>
+        	<a href="login.html">Login</a>
+        </li>
+        <li>
+        	<a href="servicos.html">Serviços</a>
+        </li>
+        <li>
+        	<a href="sobre.html">Sobre Nós</a>
+        </li>
+        <li>
+        	<a href="contatos.html">Contatos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<form id="formExemplo" data-toggle="validator" role="form" class='formulario'>
+		
+	</style>
+		<div class="form-group">	    
+			<label for="textNome" class="control-label">Nome</label>	    
+			<input id="textNome" class="form-control" placeholder="Digite seu Nome..." type="text" required>  
+		</div>  	  
+		<div class="form-group">	    
+			<label for="inputPassword" class="control-label">Senha</label>	    
+			<input type="password" class="form-control" id="inputPassword" placeholder="Digite sua Senha..."  	      data-minlength="6" required>	    
+			<span class="help-block">Mínimo de seis (6) digitos</span>	  
+		</div>	  
+		<div class="form-group">	    
+			<center> 
+				<button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Preencha todos os dados!">Acessar</button> 
+			</center>  
+		</div>
+		<div class="tooltip top" role="tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">
+          Some tooltip text!
+        </div>
+      </div>
+		</div>
+		<div style="color: white;">
+			<p>
+				Não tem uma conta? <a href="registro.html">Registre-se</a>.
+			</p>
+		</div>
+	</form>
+	<footer>
+        <div class="logotipo">
+            <h4>Contato:</h4>
+              Whatsapp: (53) 999301161</br>
+              E-mail: walistonbelles@bol.com.br
+        </div>
+    </footer>
+	<script src="js/jquery-3.4.1.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/validator.js"></script>
+	<script>
+      $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+</body>
+</html>
