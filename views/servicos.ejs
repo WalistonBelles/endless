@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+	<meta charset='utf-8'>
+	<title>Endless Discovery</title>
+	<link href="stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+	<link rel='stylesheet' href='stylesheets/style.css' type='text/css'/>
+	<link rel="stylesheet" href="stylesheets/dataTables.bootstrap.min.css" type="text/css">
+</head>
+<body>
+    <% include ./header.ejs %>
+	<section>
+        <div class="alert alert-info" role="alert"><center>Logo abaixo você encontra nossas ofertas de cursos.</center></div>
+            <table id="example" class="table table-striped table-bordered" style="position: relative; width: 100%;">
+                <thead>
+                    <tr style="color: white;">
+                        <th>Curso</th>
+                        <th class='sumir'>Tema</th>
+                        <th class='sumir'>Duração</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <% if(servicos){ 
+                    for(var i = 0; i < servicos.length; i++){ 
+                %>
+                <tbody>
+                    <tr>
+                        <td><%= servicos[i].nome %></td>
+                        <td class='sumir'><%= servicos[i].tema %></td>
+                        <td class='sumir'><%= servicos[i].duracao %></td>
+                        <td><%= servicos[i].preco %></td>
+                    </tr>
+                </tbody>
+                <%
+                     }
+                  } 
+                %>
+            </table>
+        </section>
+    <% include ./footer.ejs %>
+	<script src="javascripts/jquery-3.4.1.js"></script>
+	<script src="javascripts/bootstrap.js"></script>
+    <script src="javascripts/jquery.dataTables.min.js"></script>
+    <script src="javascripts/dataTables.bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );        
+    </script>
+</body>
+</html>

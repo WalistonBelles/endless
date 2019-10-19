@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form name="form1" method="POST" action="/register">
+    <table>
+        <tr>
+        <td>First name</td>
+        <td><input type="text" name="fname" ></td>
+        </tr>
+        <tr>
+        <td>last name</td>
+        <td><input type="text" name="lname" ></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+    <% if(errors){ %> 
+        <ul>
+        <% errors.forEach(function( err){ %>
+            <li> <%= err.msg %> </li>
+        <% }) %>
+        </ul>
+    <%}else{%>
+        <div> Data Entered as <%= userValue.first %>  <%= userValue.last %> </div>
+    <%}%> 
+</body>
+</html>
