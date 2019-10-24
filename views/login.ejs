@@ -41,7 +41,7 @@
 </head>
 <body>
 	<% include ./header.ejs %>
-	<form id="formExemplo" data-toggle="validator" role="form" class='formulario' action="/login" method="POST">
+	<form id="formExemplo" data-toggle="validator" role="form" class='formulario' action="/entrar" method="POST">
 		<% if(validacao){ %>
 		    <ul class="list-group">
 		      <% for(var i = 0; i < validacao.length; i++){ %>
