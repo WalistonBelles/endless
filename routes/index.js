@@ -16,6 +16,11 @@ exports.login = function(req, res) {
     res.render('login', { validacao: {}, acesso: {} });
  };
 
+// rota cadastro 
+exports.cadastro = function (req, res) {
+  res.render('cadastro');
+};
+
 // rota serviços
 exports.servicos = function(req, res) {
 
@@ -27,6 +32,17 @@ exports.servicos = function(req, res) {
 	      res.render('servicos', { servicos: result.rows });
 	  });
  };
+
+// rota salvar cadastro
+exports.salvar = function (req, res) {
+    var cols = [req.body.name, req.body.email, req.body.senha];
+    client.query("INSERT INTO usuario (nome_cli, email_cli, senha_cli) VALUES($1, $2, $3) RETURNING *", cols, function (err, result) {
+        if (err) {
+            console.log("Erro: %s ", err);
+        }
+        res.redirect('admin/index');
+    });
+};
 
 // rota sobre
 exports.sobre = function (req, res) {
@@ -64,7 +80,7 @@ exports.entrar= function (req, res) {
     // atribui o name "email" do formulário à sessão
     sess.email = req.body.email;
     // redireciona para a rota da área administrativa
-    res.redirect('/admin');
+    res.redirect('admin/index');
   }
   // caso a senha esteja incorreta, envia para a tela de login novamente
   else{

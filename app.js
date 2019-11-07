@@ -7,6 +7,7 @@ var session = require('express-session');
 
 //inclui as rotas
 var routes = require('./routes');
+var admin = require('./routes/admin'); 
 
 // instancia um servidor
 var app = express();
@@ -32,13 +33,19 @@ app.use(expressValidator());
 // SITE
 app.get('/', routes.index);
 app.get('/login', routes.login);
+app.get('/cadastro', routes.cadastro);
 app.get('/servicos', routes.servicos);
 app.get('/sobre', routes.sobre);
 app.get('/contatos', routes.contatos);
 app.post('/entrar', routes.entrar);
+app.post('/salvar', routes.salvar);
 
 // ADMIN
-app.get('/admin', routes.admin);
+app.get('/admin/index', admin.index);
+app.get('/admin/servicos', admin.servicos);
+app.get('/admin/servicos/adicionar', admin.adicionar);
+app.post('/admin/servicos/salvar', admin.salvar);
+app.get('/admin/servicos/excluir/:idservicos', admin.excluir);
 
 // iniciar um servidor com uma porta específica
 app.listen(3000, function () {

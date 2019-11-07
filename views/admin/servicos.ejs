@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Endless | Admin</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Waves Effect Css -->
+    <link href="/plugins/node-waves/waves.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="/plugins/animate-css/animate.css" rel="stylesheet" />
+    <!-- Morris Chart Css-->
+    <link href="/plugins/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="/stylesheets/styli.css" rel="stylesheet">
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="/stylesheets/themes/all-themes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/dataTables.bootstrap.min.css" type="text/css">
+</head>
+
+<body class="theme-red">
+    <% include ./header.ejs %>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <% include ./lateral.ejs %>
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Widgets -->
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-pink hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">playlist_add_check</i>
+                        </div>
+                        <% if(servicos){
+                            var count = 0; 
+                            for(var i = 0; i < servicos.length; i++){
+                                count++;
+                            }
+                          } 
+                        %>
+                        <div class="content">
+                            <div class="text">CURSOS</div>
+                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"><%= count%></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-cyan hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">help</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">TICKETS</div>
+                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-light-green hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">forum</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">COMENTARIOS</div>
+                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-orange hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">person_add</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">USUARIOS</div>
+                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20">1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Widgets -->
+            <br/>
+            <div class="row clearfix">
+                <!-- Task Info -->
+                <section>
+                    <table id="example" class="table table-striped table-bordered" style="width: 100%; background-color: #8B4513; text-align: center;">
+                        <thead>
+                            <tr style="color: white;">
+                                <th>Imagem</th>
+                                <th>Curso</th>
+                                <th class='sumir'>Tema</th>
+                                <th class='sumir'>Duração</th>
+                                <th>Preço</th>
+                                <th>Controle</th>
+                            </tr>
+                        </thead>
+                        <% if(servicos){ 
+                            for(var i = 0; i < servicos.length; i++){ 
+                        %>
+                        <tbody>
+                            <tr style='background-color: #F0E68C;'>
+                                <td><img src="/images/<%= servicos[i].foto %>" class="foto-mini" /></td>
+                                <td><%= servicos[i].nome %></td>
+                                <td class='sumir'><%= servicos[i].tema %></td>
+                                <td class='sumir'><%= servicos[i].duracao %></td>
+                                <td><%= servicos[i].preco %></td>
+                                <td>
+                                    <a class="a-inside edit" href="/admin/servicos/editar/<%=servicos[i].id%>">Editar</a>
+                                    <a class="a-inside delete" name='idservicos' href="/admin/servicos/excluir/<%=servicos[i].id%>">Excluir</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <%
+                             }
+                          } 
+                        %>
+                    </table>
+                <center>
+                    <a href='/admin/servicos/adicionar'>
+                        <button class='btn bg-orange waves-effect' data-type="success"><i class="material-icons">publish</i>Adicionar Curso</button>
+                    </a>
+                </center>
+                <br>
+                </section>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Jquery Core Js -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/plugins/bootstrap/js/bootstrap.js"></script>
+    
+    <script src="/javascripts/jquery-3.4.1.js"></script>
+    <script src="/javascripts/jquery.dataTables.min.js"></script>
+    <script src="/javascripts/dataTables.bootstrap.min.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="/plugins/raphael/raphael.min.js"></script>
+    <script src="/plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="/plugins/chartjs/Chart.bundle.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/javascripts/admin.js"></script>
+    <script src="/javascripts/pages/index.js"></script>
+    <script src="/javascripts/pages/ui/dialogs.js"></script>
+
+    <!-- Demo Js -->
+    <script src="/javascripts/demo.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );        
+    </script>
+</body>
+
+</html>
