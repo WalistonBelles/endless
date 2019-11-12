@@ -2,7 +2,7 @@ const formidable = require('formidable');
 // conexão com o postgres
 const { Client } = require('pg');
 //Cria a string de conexão com o PostgreSQL.
-var connectionString = 'postgress://postgres@localhost/Endless';
+var connectionString = 'postgress://postgres:postgres@localhost/Endless';
 //Abre a conexão com o banco de dados.
 const client = new Client({ connectionString: connectionString }); 
 client.connect();

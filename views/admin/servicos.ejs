@@ -117,7 +117,7 @@
                                 <th>Controle</th>
                             </tr>
                         </thead>
-                        <% if(servicos){ 
+                        <% if(servicos.length){ 
                             for(var i = 0; i < servicos.length; i++){ 
                         %>
                         <tbody>
@@ -127,14 +127,17 @@
                                 <td class='sumir'><%= servicos[i].tema %></td>
                                 <td class='sumir'><%= servicos[i].duracao %></td>
                                 <td><%= servicos[i].preco %></td>
-                                <td>
-                                    <a class="a-inside edit" href="/admin/servicos/editar/<%=servicos[i].id%>">Editar</a>
-                                    <a class="a-inside delete" name='idservicos' href="/admin/servicos/excluir/<%=servicos[i].id%>">Excluir</a>
+                                <td><%=servicos[i].id%>
+                                    <a class="a-inside delete" href="/admin/servicos/excluir/<%=servicos[i].id%>">Excluir</a>
                                 </td>
                             </tr>
                         </tbody>
                         <%
-                             }
+                             } }  else{ %>
+            <tr>
+                <td colspan="7">Nenhuma notícia cadastrada</td>
+            </tr>
+            <%
                           } 
                         %>
                     </table>
